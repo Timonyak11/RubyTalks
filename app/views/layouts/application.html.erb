@@ -2,12 +2,13 @@
 <html>
   <head>
     <title>RubyTalks</title>
+    <%= Gon::Base.render_data %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script src="<% javascript_path 'application.js'%>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <%= javascript_importmap_tags %>
   </head>
 

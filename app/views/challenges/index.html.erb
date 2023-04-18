@@ -1,15 +1,16 @@
+<script src="<%= javascript_path 'talkings/conversation.js' %>"></script>
 <div id="challenge">
     <%= render "partials/header" %>
-    <h1><%= @content[1][:dothis] %></h1>
+    <h1 id="dothis"></h1>
     
     <div id="convo">
         <div id="rubysays">    
-            <p><%= @content[1][:rubysays] %></p>
-            <img class="arrows" src="<%= asset_path('ruby.png') %>" alt="Ruby">
+            <p id="ruby"></p>
+            <img class="person" src="<%= asset_path('ruby.png') %>" alt="Ruby">
         </div>
         <div id="respond">
-            <img class="arrows" src="<%= asset_path('ruby.png') %>" alt="Ruby">
-            <p id="you"><%= @answer %></p>
+            <img class="person" src="<%= asset_path('ruby.png') %>" alt="User icon">
+            <p id="you"></p>
         </div>
     </div>
 
@@ -23,21 +24,20 @@
             <input type="submit">
         </form>
     </div>
-    
 </div>      
 
 <div id="description">
-    <p id="navigation">Level 1 of n</p>
-    <img class="arrows" id="left-arrow" src="<%= asset_path('arrow-left.png') %>" alt="arrow to left">
-    <img class="arrows" src="<%= asset_path('arrow-right.png') %>" alt="arrow to right">
-    <img class="arrows" src="<%= asset_path('dropdown.png') %>" alt="dropdown menu  ">
-    <progress value="10" max="100"></progress>
-    <h2><%= @content[1][:title] %></h2>
-    <h3><%= @content[1][:subtitle] %></h3>
-    <h3 class="syntax"><%= @content[1][:method] %></h3>
-    <p><%= @content[1][:help] %></p>
+    <p id="level"></p>
+    <div id="navigations">
+        <img class="arrow" id="left-arrow" src="<%= asset_path('arrow-left.png') %>" alt="arrow to left">
+        <img class="arrow next" src="<%= asset_path('arrow-right.png') %>" alt="arrow to right">
+        <img src="<%= asset_path('dropdown.png') %>" alt="dropdown menu">
+    </div>
+    <progress></progress>
+    <h2 id="title"></h2>
+    <h3 id="subtitle"></h3>
+    <h3 class="syntax" id="method"></h3>
+    <p id="help"></p>
     <h3>Examples</h3>
-<%  @content[1][:examples].each do |example| %>
-    <p class='examples'><%= example %></p>
-<%  end %>
+    <div id="examples"></div>
 </div>

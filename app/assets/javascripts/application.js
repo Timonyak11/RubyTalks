@@ -11,26 +11,15 @@
 // about supported directives.
 //
 //= require jquery3
-document.addEventListener("DOMContentLoaded", function() {
-    const currentLevel = parseInt(localStorage.currentLevel,10) || 0;
+//= require gon
+//= require jquery
 
-    const blankProgress = {
-        totalCorrect : 0,
-        percentComplete : 0,
-        lastPercentEvent : 0,
-        guessHistory : {}
+const textarea = document.getElementById("myTextarea");
+const maxLines = 20;
+
+textarea.addEventListener("keydown", function(event) {
+    const lines = textarea.value.split("\n");
+    if (lines.length >= maxLines && event.key === "Enter") {
+        event.preventDefault();
     }
-    
-    console.log(currentLevel);
-    const progress = JSON.parse(localStorage.getItem("progress")) || blankProgress;
-    
-    const textarea = document.getElementById("myTextarea");
-    const maxLines = 20;
-    
-    textarea.addEventListener("keydown", function(event) {
-        const lines = textarea.value.split("\n");
-        if (lines.length >= maxLines && event.key === "Enter") {
-            event.preventDefault();
-        }
-    });
 });

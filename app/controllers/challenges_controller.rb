@@ -2,13 +2,13 @@ class ChallengesController < ApplicationController
     @@output = ''
 
     def index
-        @content = [
+        gon.challenges = [
             {
                 title: "Printing",
                 subtitle: "Print your response to Ruby using puts",
                 method: "puts",
-                help: "puts is a method that stands for 'put string', It is used to output a string to the console followed by a newline character.",
-                examples: ["puts 'Hello World!' prints Hello World!", "puts 'Coding Dojo!' prints Coding Dojo!"],
+                help: "<strong>puts</strong> is a method that stands for 'put string', It is used to output a string to the console followed by a newline character.",
+                examples: ["<p><strong>puts 'Hello World!'</strong> prints Hello World!</p>", "<p><strong>puts 'Coding Dojo!'</strong>  prints Coding Dojo!"],
                 dothis: "Respond by printing 'Hello Ruby!'",
                 expected_output: "Hello Ruby!\n",
                 rubysays: "Ruby says Hi!"
@@ -17,14 +17,14 @@ class ChallengesController < ApplicationController
                 title: "Printing",
                 subtitle: "Print your response to Ruby using print",
                 method: "print",
-                help: "the print method works just like the puts method, except it doesn't add a newline character to the end of the output. The print method is used to output a string to the console without adding a newline character.",
-                examples: ["print 'Hello World!' prints Hello World!", "print 'Coding Dojo!' prints Coding Dojo!"],
+                help: "the <strong>print</strong> method works just like the puts method, except it doesn't add a newline character to the end of the output. The print method is used to output a string to the console without adding a newline character.",
+                examples: ["<p><strong>print 'Hello World!'</strong> prints Hello World!</p>", "<p><strong>print 'Coding Dojo!'</strong> prints Coding Dojo!</p>"],
                 dothis: "Respond by printing 'Hello Ruby!'",
                 expected_output: "Hello Ruby!",
                 rubysays: "Ruby says Hi!"
             }
         ]
-        @answer = @@output
+        gon.answer = @@output
         if @@output != ''
             @@output = ''
         end
@@ -41,14 +41,8 @@ class ChallengesController < ApplicationController
         rescue => e
             @@output = 'Error'
         end
-
-        expects = "Hello Ruby!\n"
-
-        puts expects
-        puts @@output
-        puts expects === @@output
-
-        redirect_to '/challenges'
+        
+        render plain: @@output
     end
 
     private 
