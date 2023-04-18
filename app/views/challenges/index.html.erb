@@ -1,3 +1,43 @@
-<div>
+<div id="challenge">
+    <%= render "partials/header" %>
+    <h1><%= @content[1][:dothis] %></h1>
+    
+    <div id="convo">
+        <div id="rubysays">    
+            <p><%= @content[1][:rubysays] %></p>
+            <img class="arrows" src="<%= asset_path('ruby.png') %>" alt="Ruby">
+        </div>
+        <div id="respond">
+            <img class="arrows" src="<%= asset_path('ruby.png') %>" alt="Ruby">
+            <p id="you"><%= @answer %></p>
+        </div>
+    </div>
 
-</div>  
+    <div id="console">
+        <div id="line-numbers">
+            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
+        </div>
+        <form action="/challenges" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <textarea name="answer" id="myTextarea" cols="82" rows="20" >puts 'Hello Ruby!'</textarea>
+            <input type="submit">
+        </form>
+    </div>
+    
+</div>      
+
+<div id="description">
+    <p id="navigation">Level 1 of n</p>
+    <img class="arrows" id="left-arrow" src="<%= asset_path('arrow-left.png') %>" alt="arrow to left">
+    <img class="arrows" src="<%= asset_path('arrow-right.png') %>" alt="arrow to right">
+    <img class="arrows" src="<%= asset_path('dropdown.png') %>" alt="dropdown menu  ">
+    <progress value="10" max="100"></progress>
+    <h2><%= @content[1][:title] %></h2>
+    <h3><%= @content[1][:subtitle] %></h3>
+    <h3 class="syntax"><%= @content[1][:method] %></h3>
+    <p><%= @content[1][:help] %></p>
+    <h3>Examples</h3>
+<%  @content[1][:examples].each do |example| %>
+    <p class='examples'><%= example %></p>
+<%  end %>
+</div>
