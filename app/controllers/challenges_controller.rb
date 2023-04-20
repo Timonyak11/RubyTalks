@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
     @@output = ''
+    @double_quote = '"'
 
     def index
         gon.challenges = [
@@ -7,7 +8,7 @@ class ChallengesController < ApplicationController
                 title: "Printing",
                 subtitle: "Print your response to Ruby using puts",
                 method: "puts",
-                help: "<strong>puts</strong> is a method that stands for 'put string', It is used to output a string to the console followed by a newline character.",
+                help: "<strong>puts</strong> is a method that stands for <b>'put string'</b>, It is used to output a string to the console followed by a newline character.",
                 examples: ["<p><strong>puts 'Hello World!'</strong> prints Hello World!</p>", "<p><strong>puts 'Coding Dojo!'</strong>  prints Coding Dojo!"],
                 dothis: "Respond by printing 'Hello Ruby!'",
                 expected_output: "Hello Ruby!\n",
@@ -22,27 +23,33 @@ class ChallengesController < ApplicationController
                 dothis: "Respond by printing 'Hello Ruby!'",
                 expected_output: "Hello Ruby!",
                 rubysays: "Ruby says Hi!"
+            },
+            {
+                title: "Data Types",
+                subtitle: "Check the data type of the given data.",
+                method: ".class",
+                help: "the <strong>print</strong> method works just like the puts method, except it doesn't add a newline character to the end of the output. The print method is used to output a string to the console without adding a newline character.",
+                examples: ["<p><strong>print 'Hello World!'</strong> prints Hello World!</p>", "<p><strong>print 'Coding Dojo!'</strong> prints Coding Dojo!</p>"],
+                dothis: "What do you think is the data type of this data given by Ruby?",
+                expected_output: "Hello Ruby!",
+                rubysays: "Ruby says Hi!"
             }
         ]
-        gon.answer = @@output
-        if @@output != ''
-            @@output = ''
-        end
     end
 
     def run
         begin
             eval(params[:answer])
-            @@output = capture_stdout do 
+            output = capture_stdout { 
                 eval(params[:answer])
-            end
+            }
         rescue SyntaxError => e
-            @@output = 'Error'
+            output = 'Syntax Error'
         rescue => e
-            @@output = 'Error'
+            output = 'Error'
         end
         
-        render plain: @@output
+        render plain: output
     end
 
     private 

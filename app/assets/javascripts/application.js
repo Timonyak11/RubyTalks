@@ -13,13 +13,3 @@
 //= require jquery3
 //= require gon
 //= require jquery
-
-const textarea = document.getElementById("myTextarea");
-const maxLines = 20;
-
-textarea.addEventListener("keydown", function(event) {
-    const lines = textarea.value.split("\n");
-    if (lines.length >= maxLines && event.key === "Enter") {
-        event.preventDefault();
-    }
-});

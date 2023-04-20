@@ -30,7 +30,8 @@ header{
 }
 
 header p{
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bolder;
 }
 
 
@@ -81,6 +82,7 @@ div#challenge div#respond img{
     vertical-align: -70px;
     display: inline-block;
     height: 100px;
+    margin-left: 10px;
 }
 
 div#challenge div#respond p{
@@ -88,104 +90,152 @@ div#challenge div#respond p{
     /* background: #000; */
 }
 
-div#console{
-    width: 720px;
-    height: 380px;
+div#challenge form{
+    width: 600px;
     margin: 30px auto;
-    border: 1px solid black;
-    background: lightblue;
     font-size: 14px;
-    padding: 10px;
+    background: #000;
 }
 
-div#console div#line-numbers{
-    float: left; 
-    text-align: right; 
-    padding-right: 10px; 
-    border-right: 1px solid black; 
-    margin-right: 5px;
+div#challenge form p{
+    padding: 3px;
+    color: white;
 }
 
-textarea{
-    resize: none;
-    padding-left: 5px;
+div#challenge form input[type=submit]{
+    width: 100%;
+    background: rgb(148, 53, 108);
+    color: white;
 }
 
-/* Description */
-div#description{
-    background: pink;
+div#editor{
+    width: 600px;
+    height: 350px;
+    margin: 0px auto;
+    font-size: 16px;
+}
+
+/* challenge description */
+div#challenge_desc{
     display: inline-block;
     padding: 10px;
     width: 366px;
-    vertical-align: top;
+    background: pink;
 }
 
-p#level{
+div#challenge_desc p#level{
     display: inline-block;
-    font-size: 20px;
+    font-size: 22px;
+    font-weight: bolder;
 }
 
-div#navigations{
+div#challenge_desc div#navigations{
     display: inline-block;
     position: absolute;
     right: 20px;
-    top: 27px;
+    top: 17px;
 }
 
-div#navigations img{
+div#challenge_desc div#navigations img{
     display: inline-block;
     position: relative;
     margin: 0 5px;
-    top: 5px;
+    top: 0px;
     height: 20px;
 }
 
-progress{
+div#challenge_desc progress{
     width: 100%;
 }
 
-div#description h3.syntax{
+div#challenge_desc h3.syntax{
     font-size: 24px;
     margin: 10px 0;
     padding: 0;
     font-weight: 200;
     opacity: .8;
     margin: 10px 0;
-    background: rgb(199, 6, 119);
+    background: rgb(207, 73, 151);
+    border-bottom: 4px solid rgb(148, 53, 108);
     display: inline-block;
     padding: 5px 8px;
 }
 
-div#description strong{
+div#challenge_desc strong{
     background: rgb(199, 6, 119);
     opacity: .8;
     font-weight: 200;
     padding: 2px 4px;
 }
 
-div#description p{
+div#challenge_desc p:not(#level){
     margin: 15px 0;
 }
 
-div#description p.examples{
+div#challenge_desc p.examples{
     border-top: 1px solid #555;
 }
 
 
-/* for Scroll bar */
-div#challenge::-webkit-scrollbar {
-    width: 10px;
+/* List of Challenges */
+div#challenges_list{
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    width: 366px;
+    background: pink;
 }
 
-div#challenge::-webkit-scrollbar-track {
+div#challenges_list p#choose{
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+
+div#challenges_list img.exit{
+    position: absolute;
+    height: 20px;
+    right: 25px;
+    top: 17px;
+}
+
+/* list of all challenges */
+div#challenges_list{
+    display: none;
+}
+
+div#challenges_list ol{
+    list-style-type: none;
+}
+
+div#challenges_list ol p{
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+div#challenges_list ol li {
+    margin-left: 10px;
+}
+
+div#challenges_list ol li:before {
+    content: counter(list-item) " ";
+}
+
+/* for Scroll bar */
+div#challenge::-webkit-scrollbar, .ace_scrollbar::-webkit-scrollbar {
+    width: 3px;
+}
+
+div#challenge::-webkit-scrollbar-track, .ace_scrollbar::-webkit-scrollbar-track {
     background-color: #f1f1f1;
 }
 
-div#challenge::-webkit-scrollbar-thumb {
+div#challenge::-webkit-scrollbar-thumb, .ace_scrollbar::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 5px;
 }
 
-div#challenge::-webkit-scrollbar-thumb:hover {
+div#challenge::-webkit-scrollbar-thumb:hover, .ace_scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }

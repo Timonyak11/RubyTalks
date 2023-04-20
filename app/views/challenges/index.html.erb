@@ -9,29 +9,26 @@
             <img class="person" src="<%= asset_path('ruby.png') %>" alt="Ruby">
         </div>
         <div id="respond">
-            <img class="person" src="<%= asset_path('ruby.png') %>" alt="User icon">
+            <img class="person" src="<%= asset_path('person.png') %>" alt="User icon">
             <p id="you"></p>
         </div>
     </div>
 
-    <div id="console">
-        <div id="line-numbers">
-            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20
-        </div>
-        <form action="/challenges" method="post">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <textarea name="answer" id="myTextarea" cols="82" rows="20" >puts 'Hello Ruby!'</textarea>
-            <input type="submit">
-        </form>
-    </div>
+    <form action="/challenges" method="post">
+        <p>Ruby Editor</p>
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div id="editor"></div>
+        <input type="submit">
+    </form>
+
 </div>      
 
-<div id="description">
+<div id="challenge_desc">
     <p id="level"></p>
     <div id="navigations">
         <img class="arrow" id="left-arrow" src="<%= asset_path('arrow-left.png') %>" alt="arrow to left">
         <img class="arrow next" src="<%= asset_path('arrow-right.png') %>" alt="arrow to right">
-        <img src="<%= asset_path('dropdown.png') %>" alt="dropdown menu">
+        <img class="dropdown-menu" src="<%= asset_path('dropdown.png') %>" alt="dropdown menu">
     </div>
     <progress></progress>
     <h2 id="title"></h2>
@@ -40,4 +37,9 @@
     <p id="help"></p>
     <h3>Examples</h3>
     <div id="examples"></div>
+</div>
+<div id="challenges_list">
+    <p id="choose">Choose a Challenge</p>
+    <img class="exit" src="<%= asset_path('exit.png') %>" alt="dropdown menu">
+    <div id="challenges"></div>
 </div>
