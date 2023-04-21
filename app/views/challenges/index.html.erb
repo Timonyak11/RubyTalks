@@ -1,26 +1,35 @@
 <script src="<%= javascript_path 'talkings/conversation.js' %>"></script>
+<script>
+    let rubycorrect = '<%= asset_path("rubycorrect.png") %>';
+    let rubyasks = '<%= asset_path("ruby1.png") %>';
+    let rubywrong = '<%= asset_path("rubywrong.png") %>';
+    let rubyyoucandoit = '<%= asset_path("rubyyoucandoit.png") %>';
+    let rubybadge = '<%= asset_path("rubybadge.png") %>';
+</script>
+
 <div id="challenge">
     <%= render "partials/header" %>
     <h1 id="dothis"></h1>
     
-    <div id="convo">
-        <div id="rubysays">    
-            <p id="ruby"></p>
-            <img class="person" src="<%= asset_path('ruby.png') %>" alt="Ruby">
+    <div id="interaction">
+        <div id="convo">
+            <div id="rubysays">    
+                <p id="ruby"></p>
+                <img id = 'rubygem' class="person" src="<%= asset_path('ruby1.png') %>" alt="Ruby">
+            </div>
+            <div id="respond">
+                <img class="person" src="<%= asset_path('person.png') %>" alt="User icon">
+                <p id="you"></p>
+            </div>
         </div>
-        <div id="respond">
-            <img class="person" src="<%= asset_path('person.png') %>" alt="User icon">
-            <p id="you"></p>
-        </div>
+
+        <form action="/challenges" method="post">
+            <p>Ruby Editor</p>
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div id="editor"></div>
+            <input type="submit">
+        </form>
     </div>
-
-    <form action="/challenges" method="post">
-        <p>Ruby Editor</p>
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <div id="editor"></div>
-        <input type="submit">
-    </form>
-
 </div>      
 
 <div id="challenge_desc">
@@ -34,12 +43,16 @@
     <h2 id="title"></h2>
     <h3 id="subtitle"></h3>
     <h3 class="syntax" id="method"></h3>
-    <p id="help"></p>
+    <p id="methoddesc"></p>
+    <h3 class="syntax" id="topic"></h3>
+    <p id="topicdesc"></p>
     <h3>Examples</h3>
     <div id="examples"></div>
 </div>
+
 <div id="challenges_list">
     <p id="choose">Choose a Challenge</p>
     <img class="exit" src="<%= asset_path('exit.png') %>" alt="dropdown menu">
     <div id="challenges"></div>
+    <button id="reset">Reset Game</button>
 </div>
