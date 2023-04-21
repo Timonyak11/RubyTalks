@@ -29,7 +29,6 @@ $(document).ready(function() {
 
 			$('form').submit();
 		}
-
 	});
 
 	// Realtime update of the response or the output of the users answer

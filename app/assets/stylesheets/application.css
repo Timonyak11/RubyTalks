@@ -40,7 +40,6 @@ header img{
 /* Challenge */
 div#challenge{
     background-color:#FAF6F5;
-    display: inline-block;
     width: 960px;
     height: 657px;
     overflow-y: scroll;
@@ -154,9 +153,12 @@ div#editor{
 
 /* challenge description */
 div#challenge_desc{
-    display: inline-block;
+    position: relative;
     padding: 20px;
-    width: 366px;
+    width: 410px;
+    height: 657px;
+    overflow-y: scroll;
+    box-sizing: border-box;
     background: #f1e3e0;
 }
 
@@ -211,6 +213,11 @@ progress::-webkit-progress-value {
     border-radius: 10px;
 }
 
+div#challenge_desc h2{
+    font-weight: 800;
+    font-size: 28px;
+}
+
 div#challenge_desc h3#subtitle{
     margin: 10px 0;
 }
@@ -229,29 +236,36 @@ div#challenge_desc h3.syntax{
     font-weight: 700;
 }
 
-div#challenge_desc strong{
+div#challenge_desc div.examp{
+    width: 98%;
     background: rgb(250 145 229);
-    opacity: .8;
     font-weight: 700;
     padding: 3px 5px;
+    margin: 10px 0;
+}
+
+div#challenge_desc div.examp:not(:empty):before {
+    content: '';
+}
+
+div#challenge_desc div.examp:not(:empty){
+    opacity: .8;
 }
 
 div#challenge_desc p:not(#level){
     margin: 15px 0;
 }
 
-div#challenge_desc p.examples{
-    border-top: 1px solid #555;
-}
-
 /* List of Challenges */
 div#challenges_list{
-    display: inline-block;
     position: relative;
     padding: 20px;
-    width: 366px;
-    background: #f1e3e0;
+    width: 410px;
+    height: 657px;
+    overflow-y: scroll;
+    box-sizing: border-box;
     display: none;
+    background: #f1e3e0;
 }
 
 div#challenges_list p#choose{
