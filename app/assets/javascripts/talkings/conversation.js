@@ -46,15 +46,28 @@ $(document).ready(function() {
 				$('#you').addClass("correct");
 				$('#rubygem').attr('src', rubycorrect);
 				$('#ruby').html("You got it right!");
-				$('#you').html("Lezgooooo!");
+				$('#you').html(res.replaceAll("\n", "<br>"));
 
-				setTimeout(function() {
+				if(currentChallenge == 13){
 					editor.setValue('');
+					
+					$('#rubysays').hide();
+					$('#respond').hide();
+					$('#done').show();
+
 					resetresponse();
 					updatechallengeslist();
-					loadchallenge();
-				}, 2500);
-			} else{
+				} 
+				else {
+					setTimeout(function() {
+						resetresponse();
+						updatechallengeslist();
+						loadchallenge();
+					}, 2000);
+				}
+
+			} 
+			else {
 				if(res === 'Error'){
 					$('#you').addClass("wrong");
 					$('#ruby').html("Not even close.");
@@ -66,7 +79,7 @@ $(document).ready(function() {
 						$('#rubygem').attr('src', rubyasks);
 						$('#you').html(". . .");
 						$('#you').removeClass("wrong");
-					}, 2500);
+					}, 2000);
 				} else{
 					$('#you').addClass("wrong");
 					$('#ruby').html("Come on you can do it!");
@@ -77,7 +90,7 @@ $(document).ready(function() {
 						$('#ruby').html(challenge.rubysays);
 						$('#rubygem').attr('src', rubyasks);
 						$('#you').html(". . .");
-					}, 2500);
+					}, 2000);
 				}
 			}
 		});
@@ -220,6 +233,10 @@ function loadconvofield(){
 	let editor = ace.edit("editor");	
 	editor.session.setValue(rubyprovides);  
 	
+	$('#rubysays').show();
+	$('#respond').show();
+	$('#done').hide();
+
 	$('#dothis').html(challenge.dothis);
     $('#ruby').html(challenge.rubysays);
     $('#you').html('. . .');
